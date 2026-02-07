@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>HBD MOHITH 💜</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Background Video -->
+  <video id="bgVideo" autoplay muted loop>
+    <source src="assets/bg.mp4" type="video/mp4">
+  </video>
+
+  <!-- Background Music -->
+  <audio id="bgMusic" loop>
+    <source src="assets/bg-music.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- COUNTDOWN PAGE -->
+  <section id="countdownPage" class="page active">
+    <h1>Some moments aren’t late…</h1>
+    <p class="subtitle">Just wait for it daddy 💜</p>
+    <div id="countdown"></div>
+  </section>
+
+  <!-- PASSWORD PAGE -->
+  <section id="passwordPage" class="page">
+    <h1>🔒 Unlock the Surprise</h1>
+    <p class="subtitle">Hint: Your name × My game name</p>
+
+    <input type="password" id="passwordInput" placeholder="Enter password">
+    <button id="unlockBtn" class="bubble-btn">Unlock</button>
+
+    <p id="errorMsg"></p>
+  </section>
+
+  <!-- CAT PAGE -->
+  <section id="catPage" class="page">
+    <img id="catImage" src="assets/cat-flower.png" alt="Cat">
+
+    <h1 id="catText">Happy Birthday Daddy 💜</h1>
+
+    <div class="buttons hidden">
+      <button id="yesBtn" class="bubble-btn yes">Yes</button>
+      <button id="noBtn" class="bubble-btn no">No</button>
+    </div>
+  </section>
+ <!-- MENU PAGE -->
+  <section id="menuPage" class="page">
+    <h1>Click to see the surprise 🎁</h1>
+
+    <div class="menu-icons">
+      <img src="assets/icons/camera.png" class="menu-icon" id="cameraIcon">
+      <img src="assets/icons/video.png" class="menu-icon" id="videoIcon">
+      <img src="assets/icons/envelope.png" class="menu-icon" id="envelopeIcon">
+    </div>
+  </section>
+  <!-- CAMERA PAGE -->
+<div class="page" id="cameraPage">
+  <video id="cameraBgVideo" autoplay muted loop></video>
+
+  <div class="camera-container">
+    <h1 id="cameraText">Captured Moments 📸</h1>
+<div id="cameraContent" class="camera-content">
+  <img id="cameraPhoto" src="" alt="memory" />
+  <div id="cameraPoem"></div>
+</div>
+
+
+    <button id="cameraBackBtn">← Back</button>
+  </div>
+
+  <audio id="cameraMusic" loop></audio>
+</div>
+<!-- VIDEO PAGE -->
+<section id="videoPage" class="page">
+
+  <h1 class="video-title">Click to unlock the surprise 🎁</h1>
+
+  <div class="gift-container">
+<div class="gift-box" data-video="assets/video/gift1.mp4">
+  <img src="assets/images/gift.png" alt="Gift Box">
+</div>
+
+<div class="gift-box" data-video="assets/video/gift2.mp4">
+  <img src="assets/images/gift.png" alt="Gift Box">
+</div>
+
+  </div>
+
+  <button id="videoBackBtn" class="bubble-btn back-btn">← Back</button>
+
+  <!-- Fullscreen Video -->
+  <div id="videoOverlay">
+    <video id="surpriseVideo"></video>
+  </div>
+</section>
+<!-- ENVELOPE PAGE -->
+<section id="envelopePage" class="page">
+
+  <!-- BG VIDEO -->
+  <video id="envelopeBgVideo" autoplay muted loop>
+    <source src="assets/envelope-bg.mp4" type="video/mp4">
+  </video>
+
+  <!-- BG MUSIC -->
+  <audio id="envelopeMusic" loop>
+    <source src="assets/envelope-music.mp3" type="audio/mp3">
+  </audio>
+
+  <h1 class="envelope-title">💌 You’ve received a letter</h1>
+
+  <div class="envelope-stage">
+
+    <!-- CLOSED ENVELOPE -->
+    <div class="env-wrapper" id="envWrapper">
+      <div class="env-flap"></div>
+      <div class="env-body"></div>
+    </div>
+
+    <!-- LETTER -->
+    <div class="letter big-letter" id="letter">
+      <div id="letterText"></div>
+    </div>
+
+    <!-- PHOTOS (RIGHT SIDE) -->
+   <div class="letter-photos" id="letterPhotos">
+  <img src="assets/photos/letter1.jpg" class="photo photo1">
+  <img src="assets/photos/letter2.jpg" class="photo photo2">
+</div>
+
+
+  </div>
+
+  <!-- NEXT BUTTON -->
+  <button id="envelopeNextBtn" class="bubble-btn envelope-next hidden">
+    Next →
+  </button>
+
+</section>
+<!-- FINAL PAGE MUSIC -->
+<audio id="finalMusic" loop>
+  <source src="assets/final-music.mp3" type="audio/mp3">
+</audio>
+<!-- ================= FINAL VALENTINE PAGE ================= -->
+
+<!-- QUESTION PAGE -->
+<section id="valentinePage" class="page">
+
+  <div class="container">
+    <h1>Do u really like this daddy?</h1>
+
+    <div class="buttons">
+      <button class="yes-button" id="valYes">Yes</button>
+      <button class="no-button" id="valNo">No</button>
+    </div>
+
+    <div class="gif_container">
+      <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW5lenZyZHI5OXM2eW95b3pmMG40cWVrMDhtNjVuM3A4dGNxa2g2dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/VM1fcpu2bKs1e2Kdbj/giphy.gif">
+    </div>
+  </div>
+
+</section>
+<!-- YES PAGE -->
+<section id="valentineYesPage" class="page">
+
+  <div class="container">
+    <h1 class="header_text">Knew you would say yes!</h1>
+
+    <div class="gif_container">
+      <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmo3c3l5ODh3ZGN6NHhhaDE2Mjg1ZjkwOXczdDFxbWM3dTBtaW9zaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/9XY4f3FgFTT4QlaYqa/giphy.gif">
+    </div>
+  </div>
+
+</section>
+
+  <script src="script.js"></script>
+</body>
+</html>
+

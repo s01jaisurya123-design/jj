@@ -1,0 +1,556 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  overflow: hidden;
+  background: black;
+  color: #00ff88;
+}
+
+/* Background Video */
+#bgVideo {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+/* Pages */
+.page {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  backdrop-filter: brightness(0.55);
+  padding: 20px;
+}
+
+.page.active {
+  display: flex;
+}
+
+/* Text */
+h1 {
+  font-size: 2.6rem;
+  margin-bottom: 15px;
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  opacity: 0.9;
+}
+
+#countdown {
+  font-size: 2.2rem;
+  margin-top: 20px;
+}
+
+/* Input */
+input {
+  padding: 14px;
+  width: 280px;
+  font-size: 1.1rem;
+  border-radius: 14px;
+  border: none;
+  outline: none;
+  margin: 10px 0 15px;
+}
+
+/* Bubble Buttons */
+.bubble-btn {
+  padding: 14px 36px;
+  font-size: 1.2rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  background: linear-gradient(135deg, #00ff88, #00ccff);
+  color: black;
+  box-shadow: 0 8px 20px rgba(0, 255, 136, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bubble-btn:hover {
+  transform: scale(1.07);
+}
+
+.yes {
+  background: linear-gradient(135deg, #00ff88, #6affc4);
+}
+
+.no {
+  background: linear-gradient(135deg, #ff5f5f, #ff9f9f);
+}
+
+/* Buttons container */
+.buttons {
+  display: flex;
+  gap: 20px;
+  margin-top: 25px;
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Cat */
+#catImage {
+  width: 300px;
+  margin-bottom: 20px;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Floating */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+  100% { transform: translateY(0); }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  h1 { font-size: 2.1rem; }
+  #catImage { width: 260px; }
+}
+/* ---- existing styles remain SAME ---- */
+
+/* MENU PAGE */
+.menu-icons {
+  display: flex;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.menu-icon {
+  width: 110px;
+  cursor: pointer;
+  animation: floatIcon 3s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+
+.menu-icon:hover {
+  transform: scale(1.15);
+}
+
+/* Floating + shake */
+@keyframes floatIcon {
+  0% { transform: translateY(0); }
+  25% { transform: translateY(-10px); }
+  50% { transform: translateY(0); }
+  75% { transform: translateY(6px); }
+  100% { transform: translateY(0); }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .menu-icons {
+    gap: 25px;
+  }
+
+  .menu-icon {
+    width: 90px;
+  }
+}
+/* CAMERA PAGE */
+#cameraPage {
+  position: relative;
+  overflow: hidden;
+}
+
+#cameraBgVideo {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.camera-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  backdrop-filter: blur(3px);
+}
+
+#cameraText {
+  font-size: 2.6rem;
+  color: #fff;
+  margin-bottom: 20px;
+  animation: fadeIn 2s ease;
+}
+
+/* CAMERA CONTENT */
+/* CAMERA CONTENT LAYOUT */
+#cameraContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  width: 100%;
+}
+
+/* CAMERA PHOTO */
+#cameraPhoto {
+  width: 300px;          /* ⬅️ BIGGER PHOTO */
+  height: auto;
+  border-radius: 18px;
+  cursor: pointer;
+  transition: transform 0.8s ease;
+}
+
+/* Move left on click */
+#cameraPhoto.active {
+  transform: translateX(-140px);
+}
+
+/* POEM TEXT */
+#cameraPoem {
+  max-width: 320px;
+  font-size: 22px;        /* ⬅️ Bigger text */
+  font-weight: 600;      /* ⬅️ Bolder */
+  color: #ffffff;
+  line-height: 1.7;
+  text-shadow: 0 0 10px rgba(0,0,0,0.6);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+#cameraPoem.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+
+#cameraBackBtn {
+  position: fixed;        /* ⬅️ IMPORTANT */
+  bottom: 30px;
+  right: 30px;
+  padding: 10px 22px;
+  font-size: 16px;
+  border-radius: 25px;
+  border: none;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  cursor: pointer;
+  z-index: 100;
+  backdrop-filter: blur(6px);
+}
+
+
+#cameraBackBtn:hover {
+  transform: scale(1.05);
+  background: rgba(0, 0, 0, 0.8);
+}
+/* ===== CAMERA POEM FORCE FIX ===== */
+
+#cameraContent {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 40px !important;
+}
+
+#cameraPhoto {
+  position: relative;
+  z-index: 2;
+}
+
+#cameraPhoto.active {
+  transform: translateX(-120px);
+}
+
+#cameraPoem {
+  display: block !important;
+  opacity: 0;
+  visibility: hidden;
+  max-width: 280px;
+  font-size: 20px;
+  color: #ffffff;
+  line-height: 1.6;
+  z-index: 10;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: translateX(40px);
+}
+
+#cameraPoem.show {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateX(0);
+}
+/* ================= VIDEO PAGE ================= */
+
+.video-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 40px;
+  font-weight: 700;
+}
+
+.gift-container {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  margin-top: 100px;
+}
+
+/* 🎁 LUXURY GIFT BOX */
+
+.gift-box {
+  cursor: pointer;
+  animation: jiggle 1.5s infinite;
+}
+
+.gift-box img {
+  width: 160px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.gift-box:hover img {
+  transform: scale(1.08);
+}
+
+/* Jiggle animation */
+@keyframes jiggle {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+  75% { transform: rotate(-1deg); }
+  100% { transform: rotate(0deg); }
+}
+/* Back Button */
+.back-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+}
+
+/* ================= VIDEO OVERLAY ================= */
+
+#videoOverlay {
+  position: fixed;
+  inset: 0;
+  background: black;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+#videoOverlay video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+/* ================= ENVELOPE PAGE ================= */
+
+#envelopePage {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+#envelopeBgVideo {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+#envelopePage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: -1;
+}
+
+.envelope-title {
+  color: #fff;
+  font-size: 2.3rem;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.envelope-stage {
+  height: calc(100vh - 120px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 120px;
+}
+
+/* CLOSED ENVELOPE */
+.env-wrapper {
+  width: 300px;
+  height: 200px;
+  position: relative;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.env-body {
+  width: 100%;
+  height: 100%;
+  background: #f2e6d8;
+  border-radius: 6px;
+}
+
+.env-flap {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 50%;
+  background: #e6d5c3;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top;
+  transition: transform 1s ease;
+}
+
+/* LETTER */
+.big-letter {
+  width: 420px;
+  min-height: 520px;
+  background: rgba(255,252,245,0.95);
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease;
+}
+
+.big-letter p {
+  color: #000;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+/* 📸 LETTER PHOTOS (RIGHT SIDE – NOT STACKED) */
+.letter-photos {
+  display: flex;
+  gap: 24px;                 /* space between photos */
+  align-items: center;
+  justify-content: center;
+
+  width: auto;
+  opacity: 0;
+  transform: translateX(60px);
+  transition: all 1s ease;
+}
+.letter-photos .photo {
+  position: relative;       /* ⬅️ IMPORTANT */
+  width: 220px;             /* you can increase if you want */
+  border-radius: 14px;
+  box-shadow: 0 18px 35px rgba(0,0,0,0.4);
+  transition: transform 0.4s ease;
+}
+
+/* First photo */
+.photo1 {
+  top: 0;
+  left: 0;
+  transform: rotate(-6deg);
+  z-index: 2;
+}
+
+/* Second photo */
+.photo2 {
+  top: 80px;
+  left: 30px;
+  transform: rotate(6deg);
+  z-index: 1;
+}
+
+/* Show photos when envelope opens */
+.env-wrapper.open ~ .letter-photos {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* OPEN STATE */
+.env-wrapper.open .env-flap {
+  transform: rotateX(180deg);
+}
+
+.env-wrapper.open ~ .big-letter {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.env-wrapper.open ~ .letter-photos {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* NEXT BUTTON */
+.envelope-next {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+}
+.letter-photos.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+/* ================= VALENTINE FINAL PAGE ================= */
+
+#valentinePage,
+#valentineYesPage {
+  background: #f9e3e3;
+  color: #d32f2f;
+}
+
+#valentinePage h1 {
+  font-size: 2.5em;
+}
+
+#valentinePage .buttons {
+  margin-top: 20px;
+}
+
+.yes-button,
+.no-button {
+  font-size: 1.5em;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.yes-button {
+  background: #4caf50;
+  color: white;
+}
+
+.no-button {
+  background: #f44336;
+  color: white;
+}
+
+#valentineYesPage .header_text {
+  font-size: 3em;
+}
+
